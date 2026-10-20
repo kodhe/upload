@@ -1,8 +1,8 @@
 # Kodhe Upload Library
 
-Library upload file modern untuk CodeIgniter 3 dengan arsitektur modular PSR-4/PSR-12, mendukung multiple storage drivers dan validasi file.
+A modern file upload library for CodeIgniter 3 with a PSR-4/PSR-12 modular architecture, supporting multiple storage drivers and file validation.
 
-## Fitur
+## Features
 
 - **PSR-4 Autoloading** - Namespace `Kodhe\Framework\Upload\`
 - **PSR-12 Coding Standards** - Clean code style
@@ -11,11 +11,11 @@ Library upload file modern untuk CodeIgniter 3 dengan arsitektur modular PSR-4/P
   - Factory Pattern (driver instantiation)
   - Value Object Pattern (UploadedFile, UploadResult)
   - Dependency Injection (easy testing)
-- **Multiple Storage Drivers** - Local, S3, FTP, dll
+- **Multiple Storage Drivers** - Local, S3, FTP, etc.
 - **File Validation** - Size, type, dimension validation
-- **100% Backward Compatible** - API CI3 tetap berfungsi
+- **100% Backward Compatible** - the CI3 API keeps working
 
-## Instalasi
+## Installation
 
 ### Via Composer
 
@@ -25,7 +25,7 @@ composer require kodhe/upload
 
 ### Manual
 
-Copy folder `src/` ke project Anda dan setup autoloading di `application/config/config.php`:
+Copy the `src/` folder into your project and set up autoloading in `application/config/config.php`:
 
 ```php
 spl_autoload_register(function ($class) {
@@ -42,7 +42,7 @@ spl_autoload_register(function ($class) {
 });
 ```
 
-## Penggunaan
+## Usage
 
 ### CodeIgniter 3 Style (Backward Compatible)
 
@@ -79,7 +79,7 @@ class ProductController extends CI_Controller {
 use Kodhe\Framework\Upload\Upload;
 use Kodhe\Framework\Upload\Storage\LocalStorage;
 
-// Dengan local storage
+// With local storage
 $storage = new LocalStorage('./uploads/');
 $upload = new Upload($storage);
 
@@ -158,18 +158,18 @@ $upload = new Upload(new S3Storage());
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `upload_path` | `''` | Path direktori tujuan upload |
-| `allowed_types` | `''` | Tipe file yang diizinkan (ext) |
-| `file_name` | `''` | Nama file (auto-generated jika kosong) |
-| `overwrite` | `false` | Overwrite file yang sama |
-| `max_size` | `0` | Max size dalam KB (0 = unlimited) |
+| `upload_path` | `''` | Destination directory path for uploads |
+| `allowed_types` | `''` | Allowed file types (extensions) |
+| `file_name` | `''` | File name (auto-generated if empty) |
+| `overwrite` | `false` | Overwrite an existing file |
+| `max_size` | `0` | Max size in KB (0 = unlimited) |
 | `max_width` | `0` | Max width image (0 = unlimited) |
 | `max_height` | `0` | Max height image (0 = unlimited) |
 | `min_width` | `0` | Min width image |
 | `min_height` | `0` | Min height image |
-| `encrypt_name` | `false` | Encrypt filename dengan random hash |
-| `remove_spaces` | `true` | Remove spasi dari filename |
-| `file_ext_tolower` | `false` | Convert extension ke lowercase |
+| `encrypt_name` | `false` | Encrypt the filename with a random hash |
+| `remove_spaces` | `true` | Remove spaces from the filename |
+| `file_ext_tolower` | `false` | Convert the extension to lowercase |
 
 ## Methods
 
@@ -177,7 +177,7 @@ $upload = new Upload(new S3Storage());
 
 | Method | Description |
 |--------|-------------|
-| `initialize($config)` | Initialize dengan konfigurasi |
+| `initialize($config)` | Initialize with a configuration |
 | `doUpload($field = 'userfile')` | Upload single file |
 | `doMultiUpload($field = 'userfile')` | Upload multiple files |
 | `data()` | Get uploaded file data |
@@ -209,7 +209,7 @@ $upload = new Upload(new S3Storage());
 ]
 ```
 
-## Struktur Package
+## Package Structure
 
 ```
 upload/
@@ -248,4 +248,4 @@ vendor/bin/phpunit tests/
 
 ## License
 
-MIT License - lihat file LICENSE untuk detail lengkap.
+MIT License - see the LICENSE file for full details.
